@@ -1,6 +1,10 @@
 import assert from 'assert';
 
 function areAnagrams(str1, str2) {
+  if (str1.length !== str2.length) {
+    return false;
+  }
+
   let res = true;
 
   for (const char of str1) {
@@ -17,6 +21,7 @@ function test(fn) {
   assert.deepStrictEqual(fn('пост', 'стоп'), true, fn.name);
   assert.deepStrictEqual(fn('abcd', 'dcaB'), false, fn.name);
   assert.deepStrictEqual(fn('abcd', 'mnmn'), false, fn.name);
+  assert.deepStrictEqual(fn('abc', 'aabbcc'), false, fn.name);
 }
 
 test(areAnagrams);
