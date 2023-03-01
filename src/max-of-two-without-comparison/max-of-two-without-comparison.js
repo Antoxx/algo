@@ -3,7 +3,7 @@ import assert from 'assert';
 /**
  * Difference between 2 integers:
  * d = Math.abs(x - y)
- * SUm of 2 integers:
+ * Sum of 2 integers:
  * x + y = max + min = max + max - d = 2*max - d
  * Hence:
  * max = (x + y + d) / 2

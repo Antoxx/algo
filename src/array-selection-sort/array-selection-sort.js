@@ -26,10 +26,11 @@ function arraySelectionSort(arr) {
 }
 
 function test(fn) {
-  const arr = [0, 3, 2, 5, 6, 8, 1, 9, 4, 2, 1, 2, 9, 6, 4, 1, 7, -1, -5, 23, 6, 2, 35, 6, 3, 32];
-  const sortedArr = [
-    -5, -1, 0, 1, 1, 1, 2, 2, 2, 2, 3, 3, 4, 4, 5, 6, 6, 6, 6, 7, 8, 9, 9, 23, 32, 35,
-  ];
+  const arr = Array(20)
+    .fill(1)
+    .map(() => (Math.random() * 100) | 0);
+
+  const sortedArr = [...arr].sort((a, b) => a - b);
 
   assert.deepStrictEqual(fn(arr), sortedArr, fn.name);
 }
