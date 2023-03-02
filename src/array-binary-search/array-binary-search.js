@@ -49,6 +49,25 @@ function arrayBinarySearch(arr, search) {
   return pos;
 }
 
+function arrayBinarySearchRecursive(arr, search, start = 0, end = arr.length - 1) {
+  if (arr.length === 0 || arr[start] > search || arr[end] < search) {
+    return null;
+  }
+
+  const midIdx = Math.floor((start + end) / 2);
+  if (arr[midIdx] === search) {
+    return midIdx;
+  }
+
+  if (arr[midIdx] < search) {
+    return arrayBinarySearchRecursive(arr, search, midIdx + 1, end);
+  }
+
+  if (arr[midIdx] > search) {
+    return arrayBinarySearchRecursive(arr, search, start, midIdx - 1);
+  }
+}
+
 function test(fn) {
   const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
   assert.deepStrictEqual(fn(arr, 7), 7, fn.name);
@@ -65,3 +84,4 @@ function test(fn) {
 }
 
 test(arrayBinarySearch);
+test(arrayBinarySearchRecursive);
