@@ -1,7 +1,7 @@
 import assert from 'assert';
 
 /**
- * Ordinary binary search in array
+ * Ordinary binary search in array -	O(log n)
  */
 
 // function arrayBinarySearch(arr, search) {

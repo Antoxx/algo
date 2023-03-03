@@ -1,14 +1,14 @@
 import assert from 'assert';
 
 /**
- * Ordinary array bubble sort - O(N\*N)
+ * Ordinary array bubble sort - O(n²)
  */
 
 function arrayBubbleSort(arr) {
   const ln = arr.length;
 
   for (let i = 0; i < ln; i++) {
-    for (let j = 0; j < ln - 1; j++) {
+    for (let j = 0; j < ln - i - 1; j++) {
       const bubble = arr[j];
       const next = arr[j + 1];
 
@@ -32,4 +32,7 @@ function test(fn) {
   assert.deepStrictEqual(fn(arr), sortedArr, fn.name);
 }
 
-test(arrayBubbleSort);
+let times = 1000;
+while (times--) {
+  test(arrayBubbleSort);
+}

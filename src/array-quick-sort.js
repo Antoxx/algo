@@ -1,7 +1,7 @@
 import assert from 'assert';
 
 /**
- * Ordinary array quick sort - O(N\*log(N) - O(N\*N))
+ * Ordinary array quick sort - O(n log n) - O(n²)
  */
 
 function arrayQuickSort(arr) {

@@ -1,7 +1,7 @@
 import assert from 'assert';
 
 /**
- * Ordinary array selection sort - O(N\*N)
+ * Ordinary array selection sort - O(n²)
  */
 
 function arraySelectionSort(arr) {
