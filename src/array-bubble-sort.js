@@ -1,5 +1,9 @@
 import assert from 'assert';
 
+/**
+ * Ordinary array bubble sort - O(N\*N)
+ */
+
 function arrayBubbleSort(arr) {
   const ln = arr.length;
 

@@ -1,5 +1,9 @@
 import assert from 'assert';
 
+/**
+ * Ordinary array selection sort - O(N\*N)
+ */
+
 function arraySelectionSort(arr) {
   const ln = arr.length;
 

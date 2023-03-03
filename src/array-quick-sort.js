@@ -1,5 +1,9 @@
 import assert from 'assert';
 
+/**
+ * Ordinary array quick sort - O(N\*log(N) - O(N\*N))
+ */
+
 function arrayQuickSort(arr) {
   const ln = arr.length;
   if (ln <= 1) {

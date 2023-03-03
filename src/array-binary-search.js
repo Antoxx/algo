@@ -1,5 +1,9 @@
 import assert from 'assert';
 
+/**
+ * Ordinary binary search in array
+ */
+
 // function arrayBinarySearch(arr, search) {
 //   let left = 0;
 //   let right = arr.length - 1;
