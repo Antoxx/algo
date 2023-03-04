@@ -1,5 +1,7 @@
 import assert from 'assert';
 
+// Palindromes are "wow", "kayak", "rotator", "anna", "noon"
+
 function isPalindrome(str) {
   let cnt = str.length;
   if (cnt <= 1) {
@@ -19,6 +21,27 @@ function isPalindrome(str) {
   return true;
 }
 
+function isPalindromeTwoPointers(str) {
+  let cnt = str.length;
+  if (cnt <= 1) {
+    return false;
+  }
+
+  let left = 0;
+  let right = cnt - 1;
+
+  while (left < right) {
+    if (str[left] !== str[right]) {
+      return false;
+    }
+
+    left++;
+    right--;
+  }
+
+  return true;
+}
+
 function test(fn) {
   assert.deepStrictEqual(fn(''), false, fn.name);
 
@@ -32,3 +55,4 @@ function test(fn) {
 }
 
 test(isPalindrome);
+test(isPalindromeTwoPointers);

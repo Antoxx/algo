@@ -1,5 +1,8 @@
 import assert from 'assert';
 
+// Anagrams are «пила» & «липа», «пост» & «стоп»
+// Use counting of two strings characters for big strings
+
 function areAnagrams(str1, str2) {
   if (str1.length !== str2.length) {
     return false;
