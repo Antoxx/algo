@@ -1,4 +1,6 @@
 /**
+ * https://leetcode.com/problems/two-sum/
+ *
  * Find indexes of two different integers in an array which sum is equal to N
  * [2,6,3,21] for N=5 gives [0,2]
  */

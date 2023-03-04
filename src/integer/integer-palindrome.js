@@ -1,6 +1,10 @@
 import assert from 'assert';
 
-// Palindromes are 12321, 121, 11
+/**
+ * https://leetcode.com/problems/palindrome-number/
+ *
+ * Palindromes are 12321, 121, 11
+ */
 
 function isPalindrome(x) {
   if (x < 0) {
