@@ -3,7 +3,7 @@
  */
 
 import assert from 'assert';
-import { ListNode, arrToListNode, listNodeToArr } from './util.mjs';
+import { ListNode, arrToListNode, listNodeToArr } from '../util.mjs';
 
 function addTwoNumbers(l1, l2) {
   let resList = new ListNode();

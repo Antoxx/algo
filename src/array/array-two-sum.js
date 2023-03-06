@@ -23,6 +23,7 @@ function twoSumBruteForce(nums, target) {
   return null;
 }
 
+// suitable for UNSORTED array
 function twoSumDiff(nums, target) {
   let ticks = 0;
   let hash = new Map();
@@ -38,6 +39,31 @@ function twoSumDiff(nums, target) {
   }
 }
 
+// suitable for SORTED array ONLY
+function twoSumPointers(nums, target) {
+  let left = 0;
+  let right = nums.length - 1;
+  let sum = 0;
+  let ticks = 0;
+
+  while (left < right) {
+    ticks++;
+
+    sum = nums[left] + nums[right];
+
+    if (sum === target) {
+      console.log(`Ticks for two pointers: ${ticks}`);
+      return [left, right];
+    } else {
+      if (sum > target) {
+        right--;
+      } else {
+        left++;
+      }
+    }
+  }
+}
+
 function test(fn) {
   assert.deepStrictEqual(fn([3, 3], 6), [0, 1], fn.name);
   assert.deepStrictEqual(fn([2, 6, 3, 21], 5), [0, 2], fn.name);
@@ -49,3 +75,4 @@ function test(fn) {
 
 test(twoSumBruteForce);
 test(twoSumDiff);
+test(twoSumPointers);
