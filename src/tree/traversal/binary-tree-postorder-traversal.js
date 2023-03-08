@@ -44,6 +44,35 @@ function postorderTraversal(root) {
   }
 
   const ans = [];
+  const stack = [];
+  let node = root;
+  let lastNodeVisited = null;
+
+  while (stack.length || node) {
+    if (node) {
+      stack.push(node);
+      node = node.left;
+    } else {
+      const lastNode = stack.at(-1);
+      if (lastNode.right && lastNodeVisited !== lastNode.right) {
+        node = lastNode.right;
+      } else {
+        ans.push(lastNode.val);
+        lastNodeVisited = stack.pop();
+      }
+    }
+  }
+
+  return ans;
+}
+
+// using stack with Symbol
+function postorderTraversalSymbol(root) {
+  if (!root) {
+    return [];
+  }
+
+  const ans = [];
   const stack = [root];
   const viewed = Symbol('viewed');
 
@@ -76,5 +105,6 @@ function test(fn) {
 }
 
 test(postorderTraversal);
+test(postorderTraversalSymbol);
 test(postorderTraversalRecursive);
 test(postorderTraversalRecursiveSpread);
