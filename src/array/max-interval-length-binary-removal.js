@@ -1,5 +1,11 @@
 import assert from 'assert';
 
+/**
+ * Дан массив из нулей и единиц.
+ * Нужно определить, какой максимальный по длине подинтервал единиц можно получить, удалив ровно один элемент массива.
+ * [1, 1, 0]
+ */
+
 function maxIntervalLengthBinaryRemoval(arr) {
   let maxLength = 0;
   let zeroFlag = false;

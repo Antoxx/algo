@@ -1,6 +1,8 @@
 import assert from 'assert';
 
 /**
+ * Напишите метод, находящий максимальное из двух чисел, не используя операторы if-else или любые другие операторы сравнения.
+ *
  * Difference between 2 integers:
  * d = Math.abs(x - y)
  * Sum of 2 integers:

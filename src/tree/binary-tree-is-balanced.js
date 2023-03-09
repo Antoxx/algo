@@ -1,11 +1,13 @@
 /**
  * 110. Balanced Binary Tree
  *
+ * Given a binary tree, determine if it is height-balanced.
+ *
  * https://leetcode.com/problems/balanced-binary-tree/
  */
 
 import assert from 'assert';
-import { arrToTreeNode, TreeNode } from '../util.mjs';
+import { arrToTreeNode } from '../util.mjs';
 
 function isBalanced(root) {
   if (!root) {
@@ -19,24 +21,20 @@ function isBalanced(root) {
       return 0;
     }
 
-    const lHeight = 1 + getHeight(node.left);
-    const rHeight = 1 + getHeight(node.right);
+    const lHeight = getHeight(node.left);
+    const rHeight = getHeight(node.right);
 
     if (Math.abs(lHeight - rHeight) > 1) {
       balanced = false;
     }
 
-    return Math.max(lHeight, rHeight);
+    return 1 + Math.max(lHeight, rHeight);
   }
 
   getHeight(root);
 
   return balanced;
 }
-
-const root = new TreeNode(1);
-root.left = new TreeNode(2);
-root.right = new TreeNode(2);
 
 function test(fn) {
   assert.deepStrictEqual(fn(arrToTreeNode([])), true, fn.name);
