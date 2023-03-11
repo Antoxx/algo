@@ -4,7 +4,7 @@ import assert from 'assert';
  * Fibonacci
  */
 
-// DP bottom-up
+// cycle
 function fiboCycle(n) {
   let prev1 = 1;
   let prev2 = 1;
@@ -20,6 +20,20 @@ function fiboCycle(n) {
   }
 
   return curr;
+}
+
+// DP bottom-up
+function fiboDPBU(n) {
+  if (n < 3) {
+    return 1;
+  }
+
+  const dp = [1, 1];
+  for (let i = 2; i < n; i++) {
+    dp[i % 2] = dp[1] + dp[0];
+  }
+
+  return dp[(n - 1) % 2];
 }
 
 // DP top-down + cache
@@ -40,9 +54,12 @@ function fiboRecursive(n) {
 }
 
 function test(fn) {
+  assert.deepStrictEqual(fn(1), 1, fn.name);
+  assert.deepStrictEqual(fn(3), 2, fn.name);
   assert.deepStrictEqual(fn(4), 3, fn.name);
   assert.deepStrictEqual(fn(10), 55, fn.name);
 }
 
 test(fiboCycle);
 test(fiboRecursive);
+test(fiboDPBU);
