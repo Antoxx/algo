@@ -100,15 +100,15 @@ function test(fn) {
   // assert.deepStrictEqual(fn(9), '33', fn.name);
   // assert.deepStrictEqual(fn(96234), '33', fn.name);
 
-  // assert.deepStrictEqual(fn(2), '1', fn.name);
-  // assert.deepStrictEqual(fn(3), '3', fn.name);
-  // assert.deepStrictEqual(fn(4), '31', fn.name);
-  // assert.deepStrictEqual(fn(5), '311', fn.name);
-  // assert.deepStrictEqual(fn(6), '32', fn.name);
-  // assert.deepStrictEqual(fn(7), '321', fn.name);
-  // assert.deepStrictEqual(fn(8), '312', fn.name);
+  assert.deepStrictEqual(fn(2), '1', fn.name);
+  assert.deepStrictEqual(fn(3), '3', fn.name);
+  assert.deepStrictEqual(fn(4), '31', fn.name);
+  assert.deepStrictEqual(fn(5), '311', fn.name);
+  assert.deepStrictEqual(fn(6), '32', fn.name);
+  assert.deepStrictEqual(fn(7), '321', fn.name);
+  assert.deepStrictEqual(fn(8), '312', fn.name);
   assert.deepStrictEqual(fn(9), '33', fn.name);
-  // assert.deepStrictEqual(fn(96234), '33113333332132', fn.name);
+  assert.deepStrictEqual(fn(96234), '33113333332132', fn.name);
 }
 
 test(calculate);
