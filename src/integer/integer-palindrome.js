@@ -1,6 +1,10 @@
 import assert from 'assert';
 
 /**
+ * 9. Palindrome Number
+ *
+ * Given an integer x, return true if x is a palindrome, and false otherwise.
+ *
  * https://leetcode.com/problems/palindrome-number/
  *
  * Palindromes are 12321, 121, 11
