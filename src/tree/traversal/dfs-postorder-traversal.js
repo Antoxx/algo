@@ -1,5 +1,5 @@
 /**
- * Binary Tree Postorder Traversal
+ * 145. Binary Tree Postorder Traversal
  *
  * https://leetcode.com/problems/binary-tree-postorder-traversal/
  */
@@ -48,7 +48,7 @@ function postorderTraversal(root) {
   let node = root;
   let lastNodeVisited = null;
 
-  while (stack.length || node) {
+  while (node || stack.length) {
     if (node) {
       stack.push(node);
       node = node.left;
