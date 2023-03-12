@@ -1,9 +1,7 @@
 import assert from 'assert';
 
 /**
- * String to Integer (atoi)
- *
- * https://leetcode.com/problems/string-to-integer-atoi/
+ * RLE (run-length encoding)
  */
 
 function rleEncode(s) {

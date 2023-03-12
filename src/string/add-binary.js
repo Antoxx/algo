@@ -51,11 +51,11 @@ function addBinary(a, b) {
   return ans;
 }
 
-function addBinarySimple(a, b) {
+function addBinaryBigInt(a, b) {
   return (BigInt(`0b${a}`) + BigInt(`0b${b}`)).toString(2);
 }
 
-function addBinaryBigInt(a, b) {
+function addBinaryLoops(a, b) {
   let ans = '';
   let carry = 0;
 
@@ -87,5 +87,5 @@ function test(fn) {
 }
 
 test(addBinary);
-test(addBinarySimple);
 test(addBinaryBigInt);
+test(addBinaryLoops);

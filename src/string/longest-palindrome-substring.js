@@ -1,7 +1,9 @@
 import assert from 'assert';
 
 /**
- * Longest Palindromic Substring
+ * 5. Longest Palindromic Substring
+ *
+ * Given a string s, return the longest palindromic substring in s.
  *
  * https://leetcode.com/problems/longest-palindromic-substring/
  */
