@@ -1,7 +1,7 @@
 import assert from 'assert';
 
 /**
- * Zigzag Conversion
+ * 6. Zigzag Conversion
  *
  * https://leetcode.com/problems/zigzag-conversion/
  */
