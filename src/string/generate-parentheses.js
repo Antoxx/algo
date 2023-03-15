@@ -19,6 +19,14 @@
  * ()(())
  * (()())
  * ((()))
+ *
+ * Original for 3:
+ *
+ * ((()))
+ * (()())
+ * (())()
+ * ()(())
+ * ()()()
  */
 
 function generateParenthesis(n) {

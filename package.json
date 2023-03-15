@@ -2,7 +2,6 @@
   "name": "algo",
   "version": "1.0.0",
   "description": "",
-  "main": "1.js",
   "type": "module",
   "scripts": {
     "test": "npm test"
