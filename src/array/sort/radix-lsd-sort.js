@@ -5,30 +5,6 @@ import assert from 'assert';
  */
 
 function arrayRadixLSBSort(arr) {
-  const ln = arr.length;
-  if (ln <= 1) {
-    return arr;
-  }
-
-  const tempArr = [];
-  for (const val of arr) {
-    if (tempArr[val]) {
-      tempArr[val]++;
-    } else {
-      tempArr[val] = 1;
-    }
-  }
-
-  let idx = 0;
-  for (let i = 0; i < tempArr.length; i++) {
-    let cnt = tempArr[i];
-    while (cnt) {
-      arr[idx] = i;
-      idx++;
-      cnt--;
-    }
-  }
-
   return arr;
 }
 

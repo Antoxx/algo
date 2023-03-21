@@ -24,6 +24,7 @@ class SizedQueue {
 
   push(x) {
     this.#queue.push(x);
+    // ! error
     return this;
   }
 
