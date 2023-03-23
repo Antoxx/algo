@@ -50,7 +50,7 @@ function majorityElementSimple(nums) {
 
 function test(fn) {
   assert.deepStrictEqual(fn([3, 2, 3]), 3, fn.name);
-  assert.deepStrictEqual(fn([2, 2, 1, 1, 1, 2, 2]), 2, fn.name);
+  assert.deepStrictEqual(fn([2, 2, 1, 1, 1, 2, 2, 0]), 2, fn.name);
 }
 
 test(majorityElement);

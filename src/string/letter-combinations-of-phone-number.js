@@ -37,7 +37,7 @@ function letterCombinations(digits) {
 
   const ans = [];
 
-  function iterate(str, idx) {
+  function iterate(str = '', idx = 0) {
     if (str.length == digits.length) {
       ans.push(str);
       return;
@@ -49,7 +49,7 @@ function letterCombinations(digits) {
     }
   }
 
-  iterate('', 0);
+  iterate();
 
   return ans;
 }

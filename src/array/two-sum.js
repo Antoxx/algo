@@ -78,6 +78,7 @@ function test(fn) {
   assert.deepStrictEqual(fn([2, 7, 11, 15], 18), [1, 2], fn.name);
   assert.deepStrictEqual(fn([2, 7, 11, 15], 26), [2, 3], fn.name);
   assert.deepStrictEqual(fn([2, 7, 11, 7], 14), [1, 3], fn.name);
+  assert.deepStrictEqual(fn([1, -3, 4, 5], 9), [2, 3], fn.name);
 }
 
 test(twoSumBruteForce);
