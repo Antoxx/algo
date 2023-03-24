@@ -1,6 +1,12 @@
 import assert from 'assert';
 
 /**
+ * 42. Trapping Rain Water
+ *
+ * Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
+ *
+ * https://leetcode.com/problems/trapping-rain-water/
+ *
  * Pitcraft (2-dimensional rain)
  *
  * Игра PitCraft происходит в двумерном мире, который состоит из блоков размером 1 на 1 метр.
