@@ -209,6 +209,10 @@ work(4, 5); // 9
 
 // ==========================================
 
+const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
+
+// ==========================================
+
 // задерживающий декоратор
 function f() {
   console.log('Hello');
@@ -300,11 +304,21 @@ function partial(func, ...argsBound) {
 
 // promisify
 function promisify(func) {
-  return function (...args) {
-    return new Promise((resolve) => {
-      func.call(null, ...args, (_err, value) => {
-        resolve(value);
+  return (...args) => {
+    return new Promise((resolve, reject) => {
+      func(...args, (err, data) => {
+        err ? reject(err) : resolve(data);
       });
+    });
+  };
+}
+function promisify2(func) {
+  return (...args) => {
+    return new Promise((resolve, reject) => {
+      args.push((err, data) => {
+        err ? reject(err) : resolve(data);
+      });
+      func(...args);
     });
   };
 }
@@ -373,3 +387,13 @@ function firstUTF8Symbols() {
     }
   }
 }
+
+// ==========================================
+
+function wrapAsync(fn) {
+  return (...args) => setTimeout(() => fn(args), 1000);
+}
+let f = wrapAsync((name) => {
+  console.log(name);
+});
+f('Anton');

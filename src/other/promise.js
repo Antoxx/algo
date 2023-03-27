@@ -6,7 +6,7 @@ const states = {
 
 class MyPromise {
   #state;
-  #value;
+  #result;
   #deffered = [];
 
   constructor(fn) {
@@ -23,10 +23,10 @@ class MyPromise {
     }
   }
 
-  #resolve(data) {
+  #resolve(res) {
     if (this.#state === states.pending) {
       this.#state = states.fulfilled;
-      this.#value = data;
+      this.#result = res;
       this.#handle();
     }
   }
@@ -34,38 +34,37 @@ class MyPromise {
   #reject(err) {
     if (this.#state === states.pending) {
       this.#state = states.rejected;
-      this.#value = err;
+      this.#result = err;
       this.#handle();
     }
   }
 
   #handle() {
     if (this.#state === states.rejected && this.#deffered.length === 0) {
-      console.log('Unhandled promise rejection', this.#value);
+      console.log('Unhandled promise rejection', this.#result);
     }
 
-    this.#deffered.forEach((deferred) => {
+    this.#deffered.forEach(({ onResolved, onRejected, promise }) => {
       setTimeout(() => {
-        const callback =
-          this.#state === states.fulfilled ? deferred.onResolved : deferred.onRejected;
+        const callback = this.#state === states.fulfilled ? onResolved : onRejected;
 
         if (callback === null) {
           if (this.#state === states.fulfilled) {
-            this.#resolve.bind(deferred.promise)(this.#value);
+            this.#resolve.bind(promise)(this.#result);
           } else {
-            this.#reject.bind(deferred.promise)(this.#value);
+            this.#reject.bind(promise)(this.#result);
           }
           return;
         }
 
         let result;
         try {
-          result = callback(this.#value);
+          result = callback(this.#result);
         } catch (e) {
-          this.#reject.bind(deferred.promise)(e);
+          this.#reject.bind(promise)(e);
         }
 
-        this.#resolve.bind(deferred.promise)(result);
+        this.#resolve.bind(promise)(result);
       }, 0);
     });
   }
