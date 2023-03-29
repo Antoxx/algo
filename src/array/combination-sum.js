@@ -12,7 +12,6 @@
  * [2,6,3,21] for N=5 gives [0,2]
  *
  * https://leetcode.com/problems/combination-sum/
- *
  */
 
 import assert from 'assert';

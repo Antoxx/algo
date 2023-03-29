@@ -7,7 +7,7 @@
  *
  * Note: The solution set must not contain duplicate combinations.
  *
- * https://leetcode.com/problems/combination-sum-ii/ *
+ * https://leetcode.com/problems/combination-sum-ii/
  */
 
 import assert from 'assert';

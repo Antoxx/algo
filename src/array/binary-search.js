@@ -10,28 +10,28 @@ import assert from 'assert';
  * https://leetcode.com/problems/binary-search/
  */
 
-// function arrayBinarySearch(arr, search) {
-//   let left = 0;
-//   let right = arr.length - 1;
-//   while (left < right) {
-//     const mid = Math.floor((left + right) / 2);
-//     if (arr[mid] >= search) {
-//       right = mid;
-//     } else {
-//       left = mid + 1;
-//     }
-//   }
-//   return arr[right] === search ? right : -1;
-// }
+function arrayBinarySearchSimple(arr, search) {
+  let left = 0;
+  let right = arr.length - 1;
+  while (left < right) {
+    const mid = Math.floor((left + right) / 2);
+    if (arr[mid] >= search) {
+      right = mid;
+    } else {
+      left = mid + 1;
+    }
+  }
+  return arr[right] === search ? right : -1;
+}
 
 function arrayBinarySearch(arr, search) {
   let left = 0;
   let right = arr.length - 1;
-  let pos = null;
+  let pos = -1;
   let mid;
 
   if (search < arr[left] || search > arr[right]) {
-    return null;
+    return -1;
   }
 
   while (left <= right) {
@@ -61,7 +61,7 @@ function arrayBinarySearch(arr, search) {
 
 function arrayBinarySearchRecursive(arr, search, start = 0, end = arr.length - 1) {
   if (arr.length === 0 || arr[start] > search || arr[end] < search) {
-    return null;
+    return -1;
   }
 
   const midIdx = Math.floor((start + end) / 2);
@@ -84,14 +84,15 @@ function test(fn) {
   assert.deepStrictEqual(fn(arr, 0), 0, fn.name);
   assert.deepStrictEqual(fn(arr, 15), 15, fn.name);
   assert.deepStrictEqual(fn(arr, 13), 13, fn.name);
-  assert.deepStrictEqual(fn(arr, 16), null, fn.name);
+  assert.deepStrictEqual(fn(arr, 16), -1, fn.name);
 
-  assert.deepStrictEqual(fn([], 1), null, fn.name);
+  assert.deepStrictEqual(fn([], 1), -1, fn.name);
   assert.deepStrictEqual(fn([0], 0), 0, fn.name);
-  assert.deepStrictEqual(fn([0], 1), null, fn.name);
+  assert.deepStrictEqual(fn([0], 1), -1, fn.name);
   assert.deepStrictEqual(fn([1, 2], 1), 0, fn.name);
-  assert.deepStrictEqual(fn([1, 2], 15), null, fn.name);
+  assert.deepStrictEqual(fn([1, 2], 15), -1, fn.name);
 }
 
+test(arrayBinarySearchSimple);
 test(arrayBinarySearch);
 test(arrayBinarySearchRecursive);

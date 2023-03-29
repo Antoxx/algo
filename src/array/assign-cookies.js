@@ -9,7 +9,6 @@ import assert from 'assert';
  * Your goal is to maximize the number of your content children and output the maximum number.
  *
  * https://leetcode.com/problems/assign-cookies/
- *
  */
 
 function findContentChildren(g, s) {
