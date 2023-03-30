@@ -10,7 +10,8 @@ function findStickerSize(w, h, n) {
     return Math.floor(w / size) * Math.floor(h / size) >= n;
   }
   function rBinSearch(l, r) {
-    while (l != r) {
+    while (l < r) {
+      // +1 это особенность правого поиска
       let m = Math.floor((l + r + 1) / 2);
       if (checkStickers(m)) {
         l = m;
@@ -26,7 +27,7 @@ function findStickerSize(w, h, n) {
 }
 
 function test(fn) {
-  assert.deepStrictEqual(fn(30, 20, 7), 10, fn.name);
+  assert.deepStrictEqual(fn(30, 20, 7), 7, fn.name);
 }
 
 test(findStickerSize);

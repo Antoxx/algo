@@ -1,5 +1,5 @@
 /**
- * Find send min value in array without using sorting
+ * Find second min value in array without using sorting
  */
 
 import assert from 'assert';
@@ -18,7 +18,7 @@ function arraySecondMin(arr) {
     if (num < min1) {
       min2 = min1;
       min1 = num;
-    } else if (num > min1 && num < min2) {
+    } else if (num < min2) {
       min2 = num;
     }
   }

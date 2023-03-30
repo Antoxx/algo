@@ -8,7 +8,6 @@ import assert from 'assert';
  * https://leetcode.com/problems/maximum-subarray/
  *
  * Use Jay Kadane's algorithm
- *
  */
 
 function maxSubArray(nums) {
