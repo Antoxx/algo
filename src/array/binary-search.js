@@ -10,6 +10,7 @@ import assert from 'assert';
  * https://leetcode.com/problems/binary-search/
  */
 
+// left binary search
 function arrayBinarySearchSimple(arr, search) {
   let left = 0;
   let right = arr.length - 1;

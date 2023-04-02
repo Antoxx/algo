@@ -5,7 +5,7 @@ import assert from 'assert';
  *
  * Reverse bits of a given 32 bits unsigned integer.
  *
- * https://leetcode.com/problems/reverse-bits/description/
+ * https://leetcode.com/problems/reverse-bits/
  */
 
 function reverseBits(n) {
