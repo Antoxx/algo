@@ -28,7 +28,6 @@ function singleNumber(nums) {
 }
 
 function singleNumberSimple(nums) {
-  debugger;
   return nums.reduce((prev, curr) => prev ^ curr);
 }
 
