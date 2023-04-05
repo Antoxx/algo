@@ -25,6 +25,33 @@ export function listNodeToArr(listNode) {
   return arr;
 }
 
+export class DoublyListNode {
+  constructor(val, prev, next) {
+    this.val = val === undefined ? 0 : val;
+    this.prev = prev === undefined ? null : prev;
+    this.next = next === undefined ? null : next;
+  }
+}
+
+export function arrToDoublyListNode(arr) {
+  let prev = undefined;
+  let next = undefined;
+  let ln = arr.length;
+
+  while (ln--) {
+    prev = new DoublyListNode(arr[ln]);
+
+    if (next) {
+      prev.next = next;
+      next.prev = prev;
+    }
+
+    next = prev;
+  }
+
+  return prev;
+}
+
 export class TreeNode {
   constructor(val, left, right) {
     this.val = val === undefined ? 0 : val;
