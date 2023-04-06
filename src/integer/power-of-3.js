@@ -24,7 +24,7 @@ function isPowerOfThreeCycle(n) {
 
 // 3 ** 33 is biggest power of 3 which is smaller than Number.MAX_SAFE_INTEGER
 function isPowerOfThreeModulo(n) {
-  return 0 < n && 3 ** 33 % n === 0;
+  return n > 0 && 3 ** 33 % n === 0;
 }
 
 // if n was a power of 3, n.toString(3) would be 1, 10, 100, or 10...0 (9 = 100, 27 = 1000)

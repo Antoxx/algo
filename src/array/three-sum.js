@@ -38,10 +38,8 @@ function threeSum(nums) {
       let want = target - nums[i] - nums[j];
 
       if (map.has(want)) {
-        if (map.get(want) != i && map.get(want) != j) {
-          const res = [want, nums[i], nums[j]].sort((a, b) => a - b);
-          ans.set(res.toString(), res);
-        }
+        const res = [want, nums[i], nums[j]].sort((a, b) => a - b);
+        ans.set(res.toString(), res);
       }
     }
 

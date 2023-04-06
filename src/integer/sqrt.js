@@ -12,12 +12,10 @@ import assert from 'assert';
 
 function mySqrt(x) {
   let sqrt = 1;
-  let ans = 0;
   while (sqrt * sqrt <= x) {
-    ans = sqrt;
     sqrt++;
   }
-  return ans;
+  return sqrt - 1;
 }
 
 function mySqrtMiddle(x) {
