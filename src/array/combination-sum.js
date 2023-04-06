@@ -20,17 +20,13 @@ function combinationSum(candidates, target) {
   const result = [];
 
   function iterate(arr = [], sum = 0, idx = 0) {
-    if (sum > target) {
-      return;
-    }
-
     if (sum === target) {
       result.push(arr);
       return;
     }
 
     for (let i = idx; i < candidates.length; i++) {
-      if (candidates[i] > target) {
+      if (sum + candidates[i] > target) {
         continue;
       }
 

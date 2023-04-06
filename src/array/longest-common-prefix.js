@@ -12,11 +12,8 @@ import assert from 'assert';
 function longestCommonPrefix(strs) {
   let prefix = '';
   const cnt = strs.length;
-  if (cnt === 0) {
-    return prefix;
-  }
-
   const word = strs[0];
+
   for (let cIdx = 0; cIdx < word.length; cIdx++) {
     for (let wIdx = 1; wIdx < cnt; wIdx++) {
       const char = strs[wIdx][cIdx];

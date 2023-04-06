@@ -22,7 +22,10 @@ function arrayQuickSortMinMemory(nums) {
 
     for (let i = start; i < end; i++) {
       if (nums[i] <= pivot) {
-        [nums[i], nums[less]] = [nums[less], nums[i]];
+        if (i !== less) {
+          [nums[i], nums[less]] = [nums[less], nums[i]];
+        }
+
         less++;
       }
     }

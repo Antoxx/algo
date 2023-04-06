@@ -9,7 +9,6 @@ import assert from 'assert';
  * You may assume that the majority element always exists in the array.
  *
  * https://leetcode.com/problems/majority-element/
- *
  */
 
 function majorityElement(nums) {

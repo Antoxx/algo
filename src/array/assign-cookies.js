@@ -12,13 +12,13 @@ import assert from 'assert';
  */
 
 function findContentChildren(g, s) {
-  const sortedG = [...g].sort((a, b) => a - b);
-  const sortedS = [...s].sort((a, b) => a - b);
+  const sortedGreediness = [...g].sort((a, b) => a - b);
+  const sortedCookies = [...s].sort((a, b) => a - b);
 
   let ans = 0;
   let gIdx = 0;
-  for (const cookie of sortedS) {
-    if (cookie >= sortedG[gIdx]) {
+  for (const cookie of sortedCookies) {
+    if (cookie >= sortedGreediness[gIdx]) {
       ans++;
       gIdx++;
     }

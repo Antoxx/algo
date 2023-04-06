@@ -52,7 +52,7 @@ class MyHashMap {
 
   resolvePosition(key) {
     const hKey = this.hash(key);
-    if (this.keys[hKey] === key) {
+    if (this.keys[hKey] === key || this.keys[hKey] === undefined) {
       return hKey;
     }
 
