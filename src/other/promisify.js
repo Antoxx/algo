@@ -7,8 +7,11 @@ const promisify =
   (...args) =>
     new Promise((resolve, reject) => {
       fn(...args, (err, data) => {
-        if (err) reject(err);
-        else resolve(data);
+        if (err) {
+          reject(err);
+        } else {
+          resolve(data);
+        }
       });
     });
 

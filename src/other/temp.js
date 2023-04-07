@@ -1,14 +1,7 @@
 'use strict';
 
-function* counter(start, end, step) {
-  while (end > start) {
-    start += step;
-    yield start;
-  }
-}
+import { setInterval } from 'timers/promises';
 
-const c = counter(0, 30, 13);
-console.log(c.next());
-console.log(c.next());
-console.log(c.next());
-console.log(c.next());
+for await (const startTime of setInterval(100, Date.now())) {
+  console.log(Date.now() - startTime);
+}

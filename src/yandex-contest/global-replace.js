@@ -28,12 +28,7 @@ function globalReplace(str, pattern, replacement) {
       }
 
       if (j === pattern.length - 1) {
-        if (startIdx > 0) {
-          str = str.slice(0, startIdx) + replacement + str.slice(startIdx + pattern.length);
-        } else {
-          str = replacement + str.slice(startIdx + pattern.length);
-        }
-
+        str = str.slice(0, startIdx) + replacement + str.slice(startIdx + pattern.length);
         i = startIdx + replacement.length;
         startIdx = -1;
         j = 0;
@@ -42,10 +37,7 @@ function globalReplace(str, pattern, replacement) {
         j++;
       }
     } else {
-      if (startIdx > -1) {
-        startIdx = 0;
-      }
-
+      startIdx = -1;
       i++;
     }
   }

@@ -12,7 +12,7 @@
 import assert from 'assert';
 import { arrToTreeNode } from '../util.mjs';
 
-function minDepth(root) {
+function minDepthStack(root) {
   if (!root) {
     return 0;
   }
@@ -50,11 +50,11 @@ function minDepthRecursive(root) {
   }
 
   if (!root.left) {
-    return 1 + minDepth(root.right);
+    return 1 + minDepthRecursive(root.right);
   }
 
   if (!root.right) {
-    return 1 + minDepth(root.left);
+    return 1 + minDepthRecursive(root.left);
   }
 
   return 1 + Math.min(minDepthRecursive(root.left), minDepthRecursive(root.right));
@@ -66,5 +66,5 @@ function test(fn) {
   assert.deepStrictEqual(fn(arrToTreeNode([2, null, 3, null, 4, null, 5, null, 6])), 5, fn.name);
 }
 
-test(minDepth);
+test(minDepthStack);
 test(minDepthRecursive);

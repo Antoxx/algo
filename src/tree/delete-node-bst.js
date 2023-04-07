@@ -1,13 +1,13 @@
 /**
- * 98. Validate Binary Search Tree
+ * 450. Delete Node in a BST
  *
- * Given the root of a binary tree, determine if it is a valid binary search tree (BST).
- * A valid BST is defined as follows:
- * - The left subtree of a node contains only nodes with keys less than the node's key.
- * - The right subtree of a node contains only nodes with keys greater than the node's key.
- * - Both the left and right subtrees must also be binary search trees.
+ * Given a root node reference of a BST and a key, delete the node with the given key in the BST. Return the root node reference (possibly updated) of the BST.
  *
- * https://leetcode.com/problems/validate-binary-search-tree/
+ * Basically, the deletion can be divided into two stages:
+ * - Search for a node to remove.
+ * - If the node is found, delete the node.
+ *
+ * https://leetcode.com/problems/delete-node-in-a-bst/
  */
 
 import assert from 'assert';

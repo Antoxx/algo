@@ -9,8 +9,11 @@ const asyncify =
     setTimeout(() => {
       try {
         const result = fn(...args);
-        if (result instanceof Error) callback(result);
-        else callback(null, result);
+        if (result instanceof Error) {
+          callback(result);
+        } else {
+          callback(null, result);
+        }
       } catch (error) {
         callback(error);
       }

@@ -14,11 +14,7 @@ import assert from 'assert';
  */
 
 function getExcessiveLetter(s, t) {
-  const hash = new Set();
-  for (const char of s) {
-    hash.add(char);
-  }
-
+  const hash = new Set(s);
   for (const char of t) {
     if (!hash.has(char)) {
       return char;
