@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { ListNode } from '../util.mjs';
+import { ListNode } from '../../util.mjs';
 
 /**
  * Любимый вариант очереди Тимофея — очередь, написанная с использованием связного списка. Помогите ему с реализацией.
