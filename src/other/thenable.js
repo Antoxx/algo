@@ -1,6 +1,6 @@
 'use strict';
 
-const fs = require('node:fs');
+import fs from 'node:fs';
 
 class Thenable {
   constructor() {
@@ -9,14 +9,14 @@ class Thenable {
   }
 
   then(fn) {
-    this.fn = fn;
+    this.thenHandler = fn;
     const next = new Thenable();
     this.next = next;
     return next;
   }
 
   resolve(value) {
-    const fn = this.fn;
+    const fn = this.thenHandler;
     if (fn) {
       const next = fn(value);
       if (next) {
@@ -33,13 +33,13 @@ class Thenable {
 const readFile = (filename) => {
   const thenable = new Thenable();
   fs.readFile(filename, 'utf8', (err, data) => {
-    if (err) throw err;
+    if (err) {
+      throw err;
+    }
     thenable.resolve(data);
   });
   return thenable;
 };
 
-(async () => {
-  const file1 = await readFile('9-thenable.js');
-  console.dir({ length: file1.length });
-})();
+const file1 = await readFile('./thenable.js');
+console.dir({ length: file1.length });
