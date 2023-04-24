@@ -36,6 +36,8 @@ function arrMax(arr) {
 
 // ==========================================
 
+const randomChar = () => String.fromCharCode(Math.floor(Math.random() * 25 + 97));
+
 // случайный пароль из N символов
 function randomPassword(len = 8) {
   function getChars(fromCode, toCode) {
@@ -59,6 +61,7 @@ function randomPassword(len = 8) {
 function generateRandomString(length = 10) {
   const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
   return Array(length)
+    .fill(null)
     .map(() => charset.charAt(Math.floor(Math.random() * charset.length)))
     .join('');
 }
@@ -67,7 +70,7 @@ function generateRandomString(length = 10) {
 
 // пуст ли объект
 function isEmpty(obj) {
-  for (var _ in obj) {
+  for (const _ in obj) {
     return false;
   }
   return true;
@@ -178,15 +181,12 @@ function printList(list) {
 // sum(1)(5)(-6)(8)...
 function sum(a) {
   let currentSum = a;
-  function f(b) {
+  function f(b = 0) {
     currentSum += b;
     return f;
   }
   // чтобы адекватно применяться в качестве строки или числа
-  f.toString = function () {
-    return currentSum;
-  };
-
+  f.toString = () => currentSum;
   return f;
 }
 
@@ -213,23 +213,23 @@ const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
 
 // ==========================================
 
-// задерживающий декоратор
+// "delay" decorator
 function f() {
   console.log('Hello');
 }
 function delay(func, ms) {
-  return function (...args) {
+  return (...args) => {
     setTimeout(func.bind(this, args), ms);
   };
 }
 var f1000 = delay(f, 1000);
 var f1500 = delay(f, 1500);
-f1000('test'); // показывает "test" после 1000 мс
-f1500('test'); // показывает "test" после 1500 мс
+f1000('test'); // "test" in 1000 ms
+f1500('test'); // "test" in 1500 ms
 
 // ==========================================
 
-// debounce декоратор - 1 выполнение за N мс
+// "debounce" decorator - 1 execution for N ms
 function debounce(func, ms) {
   let busy = false;
   return function (...args) {
@@ -244,15 +244,15 @@ function debounce(func, ms) {
   };
 }
 let f = debounce(console.log, 1000);
-f(1); // выполняется немедленно
-f(2); // проигнорирован
-setTimeout(() => f(3), 100); // проигнорирован (прошло только 100 мс)
-setTimeout(() => f(4), 1100); // выполняется
-setTimeout(() => f(5), 1500); // проигнорирован (прошло только 400 мс от последнего вызова)
+f(1); // immediately
+f(2); // ignored
+setTimeout(() => f(3), 100); // ignored (only 100ms since last execution)
+setTimeout(() => f(4), 1100); // execute
+setTimeout(() => f(5), 1500); // ignored (only 400ms since last execution)
 
 // ==========================================
 
-// throttle декоратор - последний вызов за N мс выполнится после N мс
+// "throttle" decorator - execute last invocation for N ms only after N ms
 function throttle(func, ms) {
   let busy = false;
   let lastThis;
@@ -346,6 +346,27 @@ function curry(func) {
   };
 }
 
+function curry(func) {
+  const args = [];
+  return function curried(...args2) {
+    args.push(...args2);
+
+    if (args.length >= func.length) {
+      return func(...args);
+    } else {
+      return curried;
+    }
+  };
+}
+
+function sum(a, b) {
+  return a + b;
+}
+
+let curriedSum = curry(sum);
+
+log(curriedSum(1)(2)); // 3
+
 // ==========================================
 
 // сортировка массива строк с учетом Ё
@@ -361,9 +382,9 @@ function buffer(str) {
   };
 }
 let buf = buffer('123');
-buf('456'); // '123456'
-buf('789'); // '123456789'
-buf(); // '123456789'
+log(buf('456')); // '123456'
+log(buf('789')); // '123456789'
+log(buf()); // '123456789'
 
 // ==========================================
 
@@ -397,3 +418,10 @@ let f = wrapAsync((name) => {
   console.log(name);
 });
 f('Anton');
+
+// ==========================================
+
+const config = await fs
+  .readFile('config.json', 'utf-8')
+  .then(JSON.parse)
+  .catch(() => ({ port: 80 }));

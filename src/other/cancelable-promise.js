@@ -50,7 +50,9 @@ class Cancelable extends Promise {
   const cancelable = (promise) => {
     let cancelled = false;
     const next = promise.then((val) => {
-      if (cancelled) return Promise.reject(new Error('Canceled'));
+      if (cancelled) {
+        return Promise.reject(new Error('Canceled'));
+      }
       return val;
     });
     next.cancel = () => {
@@ -163,32 +165,32 @@ class Cancelable extends Promise {
       this.canceled = true;
     }
   }
-}
 
-const fetch = (url) =>
-  new Cancelable((resolve, reject, onCancel) => {
-    const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState === XMLHttpRequest.DONE) {
-        if (xhr.status === 200) resolve(xhr.responseText);
-        else reject(`Status Code: ${xhr.status}`);
-      }
-    };
-    xhr.open('GET', url, true);
-    xhr.send();
-    onCancel(() => {
-      xhr.abort();
+  const fetch = (url) =>
+    new Cancelable((resolve, reject, onCancel) => {
+      const xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) resolve(xhr.responseText);
+          else reject(`Status Code: ${xhr.status}`);
+        }
+      };
+      xhr.open('GET', url, true);
+      xhr.send();
+      onCancel(() => {
+        xhr.abort();
+      });
     });
-  });
 
-// Usage
+  // Usage
 
-const req = fetch('/person');
+  const req = fetch('/person');
 
-req.then(
-  (body) => (message.innerHTML = body),
-  (err) => (message.innerHTML = err),
-);
+  req.then(
+    (body) => (message.innerHTML = body),
+    (err) => (message.innerHTML = err),
+  );
 
-req.cancel();
-console.dir({ req });
+  req.cancel();
+  console.dir({ req });
+}
