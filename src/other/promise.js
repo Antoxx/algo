@@ -7,7 +7,7 @@ const states = {
 class MyPromise {
   #state;
   #result;
-  #deffered = [];
+  #deferred = [];
 
   constructor(fn) {
     if (typeof fn !== 'function') {
@@ -40,11 +40,11 @@ class MyPromise {
   }
 
   #handle() {
-    if (this.#state === states.rejected && this.#deffered.length === 0) {
+    if (this.#state === states.rejected && this.#deferred.length === 0) {
       console.log('Unhandled promise rejection', this.#result);
     }
 
-    this.#deffered.forEach(({ onResolved, onRejected, promise }) => {
+    this.#deferred.forEach(({ onResolved, onRejected, promise }) => {
       setTimeout(() => {
         const callback = this.#state === states.fulfilled ? onResolved : onRejected;
 
@@ -72,7 +72,7 @@ class MyPromise {
   then(onResolved, onRejected) {
     const promise = new this.constructor(() => {});
 
-    this.#deffered.push({
+    this.#deferred.push({
       onResolved: typeof onResolved === 'function' ? onResolved : null,
       onRejected: typeof onRejected === 'function' ? onRejected : null,
       promise,
