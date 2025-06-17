@@ -5,7 +5,7 @@
  *
  * https://leetcode.com/problems/generate-parentheses/
  *
- * Generate all well-formed bracket sequences using parenthesis "(" and ")" with the length equal to 2\*n:
+ * Generate all well-formed bracket sequences using parenthesis "(" and ")" with the length equal to 2*n:
  * n = 1
  * ()
  *
