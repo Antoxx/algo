@@ -38,6 +38,27 @@ function lengthOfLastWordNoTrim(s) {
   return end - start + (start > 0 ? 0 : start === null ? 1 : 0);
 }
 
+function lengthOfLastWordNoTrimSimpler(s) {
+  let lastPos = -1
+
+  for (let i = s.length - 1; i >= 0; i--) {
+    const char = s[i]
+    if (char === ' ') {
+      if (lastPos !== -1) {
+        return lastPos - i
+      }
+    } else if (lastPos === -1) {
+      lastPos = i
+    }
+  }
+
+  return lastPos === -1 ? s.length : lastPos + 1
+}
+
+function lengthOfLastWordShortest(s) {
+  return s.split(' ').filter(Boolean).at(-1).length
+}
+
 function test(fn) {
   assert.deepStrictEqual(fn('World'), 5, fn.name);
   assert.deepStrictEqual(fn('Hello World'), 5, fn.name);
@@ -48,3 +69,5 @@ function test(fn) {
 
 test(lengthOfLastWord);
 test(lengthOfLastWordNoTrim);
+test(lengthOfLastWordNoTrimSimpler);
+test(lengthOfLastWordShortest);
