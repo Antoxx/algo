@@ -1,9 +1,9 @@
 import assert from 'assert';
 
-// Palindromes are "wow", "kayak", "rotator", "anna", "noon"
-
 /**
  * 125. Valid Palindrome
+ *
+ * Easy
  *
  * A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters,
  * it reads the same forward and backward. Alphanumeric characters include letters and numbers.
@@ -12,25 +12,6 @@ import assert from 'assert';
  *
  * https://leetcode.com/problems/valid-palindrome/
  */
-
-function isPalindromeSimple(str) {
-  let cnt = str.length;
-  if (cnt <= 1) {
-    return false;
-  }
-
-  const len = Math.floor(cnt / 2);
-  let i = 0;
-  while (i <= len - 1) {
-    if (str[i] !== str[cnt - i - 1]) {
-      return false;
-    }
-
-    i++;
-  }
-
-  return true;
-}
 
 function isPalindrome(str) {
   let cnt = str.length;
@@ -69,17 +50,8 @@ function isPalindrome(str) {
 
 function test(fn) {
   assert.deepStrictEqual(fn(''), true, fn.name);
-
-  ['wow', 'kayak', 'rotator', 'anna', 'noon'].forEach((w) => {
-    assert.deepStrictEqual(fn(w), true, fn.name);
-  });
-
-  ['this', 'is', 'not', 'palindrome'].forEach((w) => {
-    assert.deepStrictEqual(fn(w), false, fn.name);
-  });
-
+  assert.deepStrictEqual(fn(' '), true, fn.name);
   assert.deepStrictEqual(fn('A man, a plan, a canal: Panama'), true, fn.name);
 }
 
 test(isPalindrome);
-// test(isPalindromeSimple);

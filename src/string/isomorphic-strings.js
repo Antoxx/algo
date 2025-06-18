@@ -3,6 +3,8 @@ import assert from 'assert';
 /**
  * 205. Isomorphic Strings
  *
+ * Easy
+ *
  * Given two strings s and t, determine if they are isomorphic.
  * Two strings s and t are isomorphic if the characters in s can be replaced to get t.
  * All occurrences of a character must be replaced with another character while preserving the order of characters.

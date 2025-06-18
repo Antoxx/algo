@@ -3,6 +3,8 @@ import assert from 'assert';
 /**
  * 67. Add Binary
  *
+ * Easy
+ *
  * Given two binary strings a and b, return their sum as a binary string.
  *
  * https://leetcode.com/problems/add-binary/
