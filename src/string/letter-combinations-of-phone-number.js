@@ -38,14 +38,14 @@ function letterCombinations(digits) {
   const ans = [];
 
   function iterate(str = '', idx = 0) {
-    if (str.length == digits.length) {
-      ans.push(str);
-      return;
-    }
+    for (const char of data[digits[idx]]) {
+      const comb = str + char;
 
-    let chars = data[digits[idx]];
-    for (let i = 0; i < chars.length; i++) {
-      iterate(str + chars[i], idx + 1);
+      if (comb.length === ln) {
+        ans.push(comb);
+      } else {
+        iterate(comb, idx + 1);
+      }
     }
   }
 
