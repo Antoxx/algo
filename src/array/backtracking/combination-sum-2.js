@@ -1,6 +1,8 @@
 /**
  * 40. Combination Sum II
  *
+ * Medium
+ *
  * Given a collection of candidate numbers (candidates) and a target number (target), find ALL UNIQUE combinations in candidates
  * where the candidate numbers sum to target.
  * Each number in candidates may only be used ONCE in the combination.
