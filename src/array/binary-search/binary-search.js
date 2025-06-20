@@ -40,8 +40,6 @@ function arrayBinarySearchSimple(nums, target) {
       right = mid - 1
     } else if (nums[mid] < target) {
       left = mid + 1
-    } else {
-      break
     }
   }
 
@@ -120,7 +118,7 @@ function test(fn) {
   assert.deepStrictEqual(fn([1, 2], 1), 0, fn.name);
   assert.deepStrictEqual(fn([1, 2], 15), -1, fn.name);
 
-  assert.deepStrictEqual(fn([[-1,0,3,5,9,12]], 2), -1, fn.name);
+  assert.deepStrictEqual(fn([-1,0,3,5,9,12], 2), -1, fn.name);
 }
 
 test(arrayBinarySearchLeft);
