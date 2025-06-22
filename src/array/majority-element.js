@@ -3,6 +3,8 @@ import assert from 'assert';
 /**
  * 169. Majority Element
  *
+ * Easy
+ *
  * Given an array nums of size n, return the majority element.
  *
  * The majority element is the element that appears more than ⌊n / 2⌋ times.

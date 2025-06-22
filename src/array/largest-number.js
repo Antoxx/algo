@@ -3,6 +3,8 @@ import assert from 'assert';
 /**
  * 179. Largest Number
  *
+ * Medium
+ *
  * Given a list of non-negative integers nums, arrange them such that they form the largest number and return it.
  * Since the result may be very large, so you need to return a string instead of an integer.
  *
@@ -10,8 +12,8 @@ import assert from 'assert';
  */
 
 function largestNumber(nums) {
-  nums.sort((a, b) => `${b}${a}` - `${a}${b}`);
-  return nums[0] === 0 ? '0' : nums.join('');
+  const sorted = nums.toSorted((a, b) => `${b}${a}` - `${a}${b}`);
+  return sorted[0] === 0 ? '0' : sorted.join('');
 }
 
 function test(fn) {
