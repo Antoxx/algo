@@ -10,7 +10,7 @@
 
 import assert from 'assert';
 
-function findMaxConsecutiveOnes(nums) {
+function findMaxConsecutiveOnesCounter(nums) {
   let max = 0;
   let current = 0;
 
@@ -31,9 +31,34 @@ function findMaxConsecutiveOnes(nums) {
   return max;
 }
 
+function findMaxConsecutiveOnesPosition(nums) {
+  let max = 0
+  let pos = -1
+
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] === 1) {
+      if (pos === -1) {
+        pos = i
+      }
+
+      continue
+    }
+
+    max = Math.max(max, i - pos)
+    pos = -1
+  }
+
+  if (pos !== -1) {
+    max = Math.max(max, nums.length - pos)
+  }
+
+  return max
+}
+
 function test(fn) {
   assert.deepStrictEqual(fn([1, 1, 0, 1, 1, 1]), 3, fn.name);
   assert.deepStrictEqual(fn([1, 0, 1, 1, 0, 1]), 2, fn.name);
 }
 
-test(findMaxConsecutiveOnes);
+test(findMaxConsecutiveOnesCounter);
+test(findMaxConsecutiveOnesPosition);
