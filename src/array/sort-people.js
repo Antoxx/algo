@@ -7,10 +7,12 @@ import assert from 'assert';
  * For each index i, names[i] and heights[i] denote the name and height of the ith person.
  * Return names sorted in descending order by the people's heights.
  *
- * https://leetcode.com/problems/sort-colors/
+ * https://leetcode.com/problems/sort-the-people/
+ *
+ * Find the tallest person and swap with the first person, then find the second tallest person and swap with the second person, etc. Repeat until you fix all n people.
  */
 
-function sortPeople(names, heights) {
+function sortPeopleShortest(names, heights) {
   return names
     .map((name, idx) => ({ name, height: heights[idx] }))
     .sort((a, b) => b.height - a.height)
@@ -30,4 +32,4 @@ function test(fn) {
   );
 }
 
-test(sortPeople);
+test(sortPeopleShortest);

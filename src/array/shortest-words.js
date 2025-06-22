@@ -27,6 +27,11 @@ function arrayShortestWords(arr) {
   return ans;
 }
 
+function arrayShortestWordsShortest(arr) {
+  const minLn = arr.map(w => w.length).sort((a,b) => a-b).at(0)
+  return arr.filter(w => w.length === minLn)
+}
+
 function test(fn) {
   assert.deepStrictEqual(fn([]), [], fn.name);
   assert.deepStrictEqual(fn(['aaa']), ['aaa'], fn.name);
@@ -34,3 +39,4 @@ function test(fn) {
 }
 
 test(arrayShortestWords);
+test(arrayShortestWordsShortest);
