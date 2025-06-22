@@ -3,10 +3,14 @@ import assert from 'assert';
 /**
  * 344. Reverse String
  *
+ * Easy
+ *
  * Write a function that reverses a string. The input string is given as an array of characters s.
  * You must do this by modifying the input array in-place with O(1) extra memory.
  *
  * https://leetcode.com/problems/reverse-string/
+ *
+ * The entire logic for reversing a string is based on using the opposite directional two-pointer approach!
  */
 
 function reverseString(chars) {
