@@ -190,6 +190,22 @@ function sum(a) {
   return f;
 }
 
+// const a = sum(1)(5)(-6)(8)...
+// a(5) => function
+// a() => number
+function sum (num) {
+  let fullSum = num
+  function fn (num2 = 0) {
+    if (num2 === 0) {
+      return fullSum
+    } else {
+      fullSum += num2
+      return fn
+    }
+  }
+  return fn
+}
+
 // декоратор метода (аля sinon.spy)
 function work(a, b) {
   return a + b;
@@ -243,12 +259,12 @@ function debounce(func, ms) {
     return func.apply(this, args);
   };
 }
-let f = debounce(console.log, 1000);
-f(1); // immediately
-f(2); // ignored
-setTimeout(() => f(3), 100); // ignored (only 100ms since last execution)
-setTimeout(() => f(4), 1100); // execute
-setTimeout(() => f(5), 1500); // ignored (only 400ms since last execution)
+let log = debounce(console.log, 1000);
+log(1); // immediately
+log(2); // ignored
+setTimeout(() => log(3), 100); // ignored (only 100ms since last execution)
+setTimeout(() => log(4), 1100); // execute
+setTimeout(() => log(5), 1500); // ignored (only 400ms since last execution)
 
 // ==========================================
 
@@ -294,10 +310,8 @@ f1000(3); // (ограничение, 1000 мс ещё нет)
 // ==========================================
 
 // частичное применение без контекста
-function partial(func, ...argsBound) {
-  return (...args) => {
-    return func.call(this, ...argsBound, ...args);
-  };
+function partial (func, ...args1) {
+  return (...args2) => func.call(this, ...args1, ...args2)
 }
 
 // ==========================================
@@ -359,13 +373,26 @@ function curry(func) {
   };
 }
 
-function sum(a, b) {
-  return a + b;
+function sum (a, b, c, d) {
+  return a + b + c + d
 }
 
-let curriedSum = curry(sum);
+const curried = curry(sum)
+const curried2 = curried(4)(6)
+console.log(curried2)
+console.log(curried2(5)(5))
 
-log(curriedSum(1)(2)); // 3
+console.log(curry(sum)(1,2,3,4))
+
+const curried3 = curry(sum)
+const curried31 = curried3(1)
+const curried32 = curried31(2)
+const curried33 = curried32(1)
+const curried34 = curried33(1)
+console.log(curried31)
+console.log(curried32)
+console.log(curried33)
+console.log(curried34)
 
 // ==========================================
 
@@ -382,9 +409,9 @@ function buffer(str) {
   };
 }
 let buf = buffer('123');
-log(buf('456')); // '123456'
-log(buf('789')); // '123456789'
-log(buf()); // '123456789'
+console.log(buf('456')); // '123456'
+console.log(buf('789')); // '123456789'
+console.log(buf()); // '123456789'
 
 // ==========================================
 
